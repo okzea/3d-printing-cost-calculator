@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Okzea">
-  <title></title>
+  <title>Home | 3D Printing cost calculator</title>
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,14 +30,22 @@
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQ2MRW5" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <header class="p-3 bg-dark text-white d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <h2 class="fs-4 mx-auto"></h2>
+  <header class="p-3 navbar navbar-dark navbar-expand bg-dark border-bottom mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/icon.svg" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
+        3D Printing cost calculator
+      </a>
 
-        <a href="">EN</a>
-        <a href="/fr">FR</a>
-
+      <div class="d-flex" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">EN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/fr">FR</a>
+          </li>
+        </ul>
       </div>
     </div>
   </header>
@@ -51,7 +60,7 @@
               <form class="needs-validation" novalidate>
                 <div class="g-3">
                   <div class="mb-3">
-                    <label for="object_weight" class="form-label">Poids</label>
+                    <label for="object_weight" class="form-label">Weight</label>
                     <div class="input-group mb-3">
                       <input type="number" id="object_weight" class="form-control">
                       <span class="input-group-text">gr</span>
@@ -59,15 +68,15 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="printing_time" class="form-label">Temps d'impression</label>
+                    <label for="printing_time" class="form-label">Printing time</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printing_time" class="form-control">
-                      <span class="input-group-text">heures</span>
+                      <span class="input-group-text">hours</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="electric_rate" class="form-label">Tarif Electricite</label>
+                    <label for="electric_rate" class="form-label">Electric rate</label>
                     <div class="input-group mb-3">
                       <input type="number" id="electric_rate" class="form-control">
                       <span class="input-group-text">€/kWh</span>
@@ -75,7 +84,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_power" class="form-label">Puissance de l'imprimante</label>
+                    <label for="printer_power" class="form-label">Printer power</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_power" class="form-control">
                       <span class="input-group-text">Watts</span>
@@ -83,7 +92,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="filament_cost" class="form-label">Cout du filament</label>
+                    <label for="filament_cost" class="form-label">Filament cost</label>
                     <div class="input-group mb-3">
                       <input type="number" id="filament_cost" class="form-control">
                       <span class="input-group-text">€/kg</span>
@@ -91,7 +100,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_purchase" class="form-label">Cout de l'imprimante</label>
+                    <label for="printer_purchase" class="form-label">Printer cost</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_purchase" class="form-control">
                       <span class="input-group-text">€</span>
@@ -99,23 +108,23 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_life" class="form-label">Amortissement de l'imprimante</label>
+                    <label for="printer_life" class="form-label">Printer life</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_life" class="form-control">
-                      <span class="input-group-text">an(s)</span>
+                      <span class="input-group-text">years</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_daily_use" class="form-label">Usage journalier</label>
+                    <label for="printer_daily_use" class="form-label">Daily use</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_daily_use" class="form-control">
-                      <span class="input-group-text">heures</span>
+                      <span class="input-group-text">hours</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="repair_rate" class="form-label">Frais de maintenance</label>
+                    <label for="repair_rate" class="form-label">Repair rate</label>
                     <div class="input-group mb-3">
                       <input type="number" id="repair_rate" class="form-control">
                       <span class="input-group-text">%</span>
@@ -123,7 +132,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="other_costs" class="form-label">Couts divers</label>
+                    <label for="other_costs" class="form-label">Misc costs</label>
                     <div class="input-group mb-3">
                       <input type="number" id="other_costs" class="form-control">
                       <span class="input-group-text">€</span>
@@ -131,7 +140,7 @@
                   </div>
 
                   <div>
-                    <label for="failure_rate" class="form-label">Taux d'echecs</label>
+                    <label for="failure_rate" class="form-label">Failure rate</label>
                     <div class="input-group mb-3">
                       <input type="number" id="failure_rate" class="form-control">
                       <span class="input-group-text">%</span>
@@ -150,7 +159,7 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0">Cout total</h6>
+                <h6 class="my-0">Total cost</h6>
               </div>
               <span class="text-muted"><span id="total_cost"></span>€</span>
             </li>

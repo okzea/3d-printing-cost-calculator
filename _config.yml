@@ -1,27 +1,12 @@
+name: 
+  en: 3D Printing cost calculator
+  fr: Calculateur de couts d'impression 3D
+
 baseurl: ""
 
 plugins:
   - jekyll-coffeescript
-  - jekyll-polyglot
 
-defaults:
-  - # Default
-    scope:
-      path: ""
-
-exclude:
-  - "README.md"
-
-# jekyll-polyglot
-languages: ["en", "fr"]
-default_lang: "en"
-exclude_from_localization:
-  - "assets/css"
-  - "assets/img"
-  - "assets/js"
-  - "assets/res"
-parallel_localization: true
-
+exclude: [README.md]
 sass:
   sourcemap: never
-
