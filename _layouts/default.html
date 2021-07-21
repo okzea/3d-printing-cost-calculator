@@ -164,9 +164,23 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0">{{ page.total_cost }}</h6>
+                <h6 class="my-0">{{ page.cost_electricity }}</h6>
               </div>
-              <span class="text-muted"><span id="total_cost"></span>{{ page.total_cost_kind }}</span>
+              <span class="text-muted"><span id="cost_electricity"></span>{{ page.cost_electricity_kind }}</span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{{ page.cost_filament }}</h6>
+              </div>
+              <span class="text-muted"><span id="cost_filament"></span>{{ page.cost_electricity_kind }}</span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between lh-sm fw-bold">
+              <div>
+                <h6 class="my-0 fw-bold">{{ page.total_cost }}</h6>
+              </div>
+              <span class="text-primary"><span id="total_cost"></span>{{ page.total_cost_kind }}</span>
             </li>
           </ul>
 

@@ -39,6 +39,12 @@ other_costs_kind: "€"
 failure_rate: "Taux d'echecs"
 failure_rate_kind: "%"
 
+cost_electricity: "Cout électricité"
+cost_electricity_kind: "€"
+
+cost_filament: "Cout filament"
+cost_filament_kind: "€"
+
 total_cost: "Cout total"
 total_cost_kind: "€"
 ---

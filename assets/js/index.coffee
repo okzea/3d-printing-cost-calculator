@@ -70,6 +70,7 @@ calcEnergy = ->
   floatPoundsHour = floatKW * floatElectricRate
   floatEnergy = floatPoundsHour * floatPrintingTime
   # Return energy cost
+  document.getElementById('cost_electricity').innerHTML = floatEnergy.toFixed(2)
   floatEnergy
 
 # ---
@@ -81,6 +82,7 @@ calcFilament = ->
   # Calculations based on spreadsheet
   floatFilament = floatFilamentCost / 1000.0 * floatObjectWeight
   # Return floatFilament cost
+  document.getElementById('cost_filament').innerHTML = floatFilament.toFixed(2)
   floatFilament
 
 # ---

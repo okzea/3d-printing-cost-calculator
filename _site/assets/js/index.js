@@ -68,6 +68,7 @@
     floatKW = floatPrinterPower / 1000.0;
     floatPoundsHour = floatKW * floatElectricRate;
     floatEnergy = floatPoundsHour * floatPrintingTime;
+    document.getElementById('cost_electricity').innerHTML = floatEnergy.toFixed(2);
     return floatEnergy;
   };
 
@@ -75,6 +76,7 @@
     var floatFilament;
     floatFilament = void 0;
     floatFilament = floatFilamentCost / 1000.0 * floatObjectWeight;
+    document.getElementById('cost_filament').innerHTML = floatFilament.toFixed(2);
     return floatFilament;
   };
 

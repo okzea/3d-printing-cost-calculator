@@ -39,6 +39,12 @@ other_costs_kind: "€"
 failure_rate: "Failure rate"
 failure_rate_kind: "%"
 
+cost_electricity: "Energy cost"
+cost_electricity_kind: "€"
+
+cost_filament: "Filament cost"
+cost_filament_kind: "€"
+
 total_cost: "Total cost"
 total_cost_kind: "€"
 ---
