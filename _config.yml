@@ -1,2 +1,27 @@
+baseurl: ""
+
 plugins:
   - jekyll-coffeescript
+  - jekyll-polyglot
+
+defaults:
+  - # Default
+    scope:
+      path: ""
+
+exclude:
+  - "README.md"
+
+# jekyll-polyglot
+languages: ["en", "fr"]
+default_lang: "en"
+exclude_from_localization:
+  - "assets/css"
+  - "assets/img"
+  - "assets/js"
+  - "assets/res"
+parallel_localization: true
+
+sass:
+  sourcemap: never
+

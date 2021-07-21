@@ -1,12 +1,14 @@
+---
+---
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.language }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Okzea">
-  <title></title>
+  <title>{{ site.data.l10n.title | escape }}</title>
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,10 +34,10 @@
   <header class="p-3 bg-dark text-white d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <h2 class="fs-4 mx-auto"></h2>
+        <h2 class="fs-4 mx-auto">{{ site.data.strings.home | escape }}</h2>
 
-        <a href="">EN</a>
-        <a href="/fr">FR</a>
+        <a href="{{ site.baseurl }}">EN</a>
+        <a href="{{ site.baseurl | append: "/fr" }}">FR</a>
 
       </div>
     </div>
