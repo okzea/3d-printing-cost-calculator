@@ -7,14 +7,14 @@
   <meta name="description" content="">
   <meta name="author" content="Okzea">
   <title>{{ page.title }} | {{ site.name[page.language] }}</title>
-  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl | append: '/icon.svg' }}">
+  <link rel="icon" type="image/svg+xml" href="{{ site.baseurl | append: '/assets/img/icon.svg' }}">
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <!-- Application -->
-  <script src="{{ site.baseurl | append: '/index.js' }}"></script>
+  <script src="{{ site.baseurl | append: '/assets/js/index.js' }}"></script>
 
   <!-- Tracking -->
   <!-- Google Tag Manager -->
@@ -33,7 +33,7 @@
   <header class="p-3 navbar navbar-dark navbar-expand bg-dark border-bottom mb-4">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="{{ site.baseurl | append: '/icon.svg' }}" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
+        <img src="{{ site.baseurl | append: '/assets/img/icon.svg' }}" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
         {{ site.name[page.language] }}
       </a>
 
@@ -99,10 +99,15 @@
                     </div>
                   </div>
 
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="investment_mode">
+                    <label class="form-check-label" for="investment_mode">{{ page.investment_mode }}</label>
+                  </div>
+
                   <div class="mb-3">
                     <label for="printer_purchase" class="form-label">{{ page.printer_purchase }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_purchase" class="form-control">
+                      <input type="number" id="printer_purchase" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.printer_purchase_kind }}</span>
                     </div>
                   </div>
@@ -110,7 +115,7 @@
                   <div class="mb-3">
                     <label for="printer_life" class="form-label">{{ page.printer_life }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_life" class="form-control">
+                      <input type="number" id="printer_life" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.printer_life_kind }}</span>
                     </div>
                   </div>
@@ -118,7 +123,7 @@
                   <div class="mb-3">
                     <label for="printer_daily_use" class="form-label">{{ page.printer_daily_use }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_daily_use" class="form-control">
+                      <input type="number" id="printer_daily_use" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.printer_daily_use_kind }}</span>
                     </div>
                   </div>
@@ -126,7 +131,7 @@
                   <div class="mb-3">
                     <label for="repair_rate" class="form-label">{{ page.repair_rate }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="repair_rate" class="form-control">
+                      <input type="number" id="repair_rate" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.repair_rate_kind }}</span>
                     </div>
                   </div>
@@ -134,7 +139,7 @@
                   <div class="mb-3">
                     <label for="other_costs" class="form-label">{{ page.other_costs }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="other_costs" class="form-control">
+                      <input type="number" id="other_costs" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.other_costs_kind }}</span>
                     </div>
                   </div>
@@ -142,7 +147,7 @@
                   <div>
                     <label for="failure_rate" class="form-label">{{ page.failure_rate }}</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="failure_rate" class="form-control">
+                      <input type="number" id="failure_rate" class="form-control" data-disabled>
                       <span class="input-group-text">{{ page.failure_rate_kind }}</span>
                     </div>
                   </div>

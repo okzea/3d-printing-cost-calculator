@@ -7,14 +7,14 @@
   <meta name="description" content="">
   <meta name="author" content="Okzea">
   <title>Home | 3D Printing cost calculator</title>
-  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <!-- Application -->
-  <script src="/index.js"></script>
+  <script src="/assets/js/index.js"></script>
 
   <!-- Tracking -->
   <!-- Google Tag Manager -->
@@ -33,7 +33,7 @@
   <header class="p-3 navbar navbar-dark navbar-expand bg-dark border-bottom mb-4">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/icon.svg" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
+        <img src="/assets/img/icon.svg" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
         3D Printing cost calculator
       </a>
 
@@ -99,10 +99,15 @@
                     </div>
                   </div>
 
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="investment_mode">
+                    <label class="form-check-label" for="investment_mode">Investment</label>
+                  </div>
+
                   <div class="mb-3">
                     <label for="printer_purchase" class="form-label">Printer cost</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_purchase" class="form-control">
+                      <input type="number" id="printer_purchase" class="form-control" data-disabled>
                       <span class="input-group-text">€</span>
                     </div>
                   </div>
@@ -110,7 +115,7 @@
                   <div class="mb-3">
                     <label for="printer_life" class="form-label">Printer life</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_life" class="form-control">
+                      <input type="number" id="printer_life" class="form-control" data-disabled>
                       <span class="input-group-text">years</span>
                     </div>
                   </div>
@@ -118,7 +123,7 @@
                   <div class="mb-3">
                     <label for="printer_daily_use" class="form-label">Daily use</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="printer_daily_use" class="form-control">
+                      <input type="number" id="printer_daily_use" class="form-control" data-disabled>
                       <span class="input-group-text">hours</span>
                     </div>
                   </div>
@@ -126,7 +131,7 @@
                   <div class="mb-3">
                     <label for="repair_rate" class="form-label">Repair rate</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="repair_rate" class="form-control">
+                      <input type="number" id="repair_rate" class="form-control" data-disabled>
                       <span class="input-group-text">%</span>
                     </div>
                   </div>
@@ -134,7 +139,7 @@
                   <div class="mb-3">
                     <label for="other_costs" class="form-label">Misc costs</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="other_costs" class="form-control">
+                      <input type="number" id="other_costs" class="form-control" data-disabled>
                       <span class="input-group-text">€</span>
                     </div>
                   </div>
@@ -142,7 +147,7 @@
                   <div>
                     <label for="failure_rate" class="form-label">Failure rate</label>
                     <div class="input-group mb-3">
-                      <input type="number" id="failure_rate" class="form-control">
+                      <input type="number" id="failure_rate" class="form-control" data-disabled>
                       <span class="input-group-text">%</span>
                     </div>
                   </div>

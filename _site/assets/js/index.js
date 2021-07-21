@@ -4,7 +4,7 @@
  */
 
 (function() {
-  var COOKIE_DAYS, calcDepreciation, calcEnergy, calcFailures, calcFilament, calcLifetime, calcOther, calcRepairs, calcTotal, calcTotalNotFailures, deleteCookies, displayTotal, displayValues, floatElectricRate, floatFailureRate, floatFilamentCost, floatObjectWeight, floatOtherCosts, floatPrinterLife, floatPrinterPower, floatPrinterPurchase, floatPrinterUse, floatPrintingTime, floatRepairRate, getCookie, grabInputs, inputsValid, loadCookies, resetDefaults, saveCookies, setCookie;
+  var COOKIE_DAYS, boolInvestmentMode, calcDepreciation, calcEnergy, calcFailures, calcFilament, calcLifetime, calcOther, calcRepairs, calcTotal, calcTotalNotFailures, deleteCookies, displayTotal, displayValues, floatElectricRate, floatFailureRate, floatFilamentCost, floatObjectWeight, floatOtherCosts, floatPrinterLife, floatPrinterPower, floatPrinterPurchase, floatPrinterUse, floatPrintingTime, floatRepairRate, getCookie, grabInputs, inputsValid, loadCookies, resetDefaults, saveCookies, setCookie;
 
   COOKIE_DAYS = 365;
 
@@ -29,6 +29,8 @@
   floatOtherCosts = '';
 
   floatFailureRate = '';
+
+  boolInvestmentMode = '';
 
   setCookie = function(strCookieName, intCookieValue, intExpireDays) {
     var dateExDate;
@@ -113,7 +115,10 @@
   calcTotalNotFailures = function() {
     var floatTotalNotFailures;
     floatTotalNotFailures = void 0;
-    floatTotalNotFailures = calcEnergy() + calcFilament() + calcDepreciation() + calcRepairs() + calcOther();
+    floatTotalNotFailures = calcEnergy() + calcFilament();
+    if (boolInvestmentMode === true) {
+      floatTotalNotFailures += calcDepreciation() + calcRepairs() + calcOther();
+    }
     return floatTotalNotFailures;
   };
 
@@ -136,6 +141,10 @@
     floatRepairRate = Number(document.getElementById('repair_rate').value);
     floatOtherCosts = Number(document.getElementById('other_costs').value);
     floatFailureRate = Number(document.getElementById('failure_rate').value);
+    boolInvestmentMode = Boolean(document.getElementById('investment_mode').checked);
+    document.querySelectorAll('input[data-disabled]').forEach(function(input) {
+      return input.disabled = !boolInvestmentMode;
+    });
   };
 
   inputsValid = function() {
@@ -149,7 +158,10 @@
     var floatTotal;
     floatTotal = 0.0;
     if (inputsValid()) {
-      floatTotal = calcTotalNotFailures() + calcFailures();
+      floatTotal = calcTotalNotFailures();
+      if (boolInvestmentMode === true) {
+        floatTotal += calcFailures();
+      }
     } else {
       alert('Some input fields contain non-numeric values (ie, letters or symbols). Please correct them, then re-calculate!');
     }
@@ -179,6 +191,7 @@
     floatRepairRate = '10';
     floatOtherCosts = '0.1';
     floatFailureRate = '10';
+    boolInvestmentMode = false;
   };
 
   displayValues = function() {
@@ -193,7 +206,9 @@
     document.getElementById('repair_rate').value = floatRepairRate;
     document.getElementById('other_costs').value = floatOtherCosts;
     document.getElementById('failure_rate').value = floatFailureRate;
-    displayTotal();
+    if (boolInvestmentMode === true) {
+      document.getElementById('investment_mode').checked = boolInvestmentMode;
+    }
   };
 
   saveCookies = function() {
@@ -208,6 +223,7 @@
     setCookie('floatRepairRate', floatRepairRate, COOKIE_DAYS);
     setCookie('floatOtherCosts', floatOtherCosts, COOKIE_DAYS);
     setCookie('floatFailureRate', floatFailureRate, COOKIE_DAYS);
+    setCookie('boolInvestmentMode', boolInvestmentMode, COOKIE_DAYS);
   };
 
   loadCookies = function() {
@@ -222,6 +238,7 @@
     floatRepairRate = getCookie('floatRepairRate');
     floatOtherCosts = getCookie('floatOtherCosts');
     floatFailureRate = getCookie('floatFailureRate');
+    boolInvestmentMode = getCookie('boolInvestmentMode') === 'true';
   };
 
   deleteCookies = function() {
@@ -236,6 +253,7 @@
     setCookie('floatRepairRate', '');
     setCookie('floatOtherCosts', '');
     setCookie('floatFailureRate', '');
+    setCookie('boolInvestmentMode', '');
   };
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -245,9 +263,11 @@
       resetDefaults();
     }
     displayValues();
+    displayTotal();
     document.querySelectorAll('input').forEach(function(input) {
       input.addEventListener('keyup', displayTotal);
     });
+    document.querySelector('input[type=checkbox]').addEventListener('click', displayTotal);
   });
 
 }).call(this);

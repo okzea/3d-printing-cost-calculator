@@ -21,6 +21,7 @@ floatPrinterUse = ''
 floatRepairRate = ''
 floatOtherCosts = ''
 floatFailureRate = ''
+boolInvestmentMode = ''
 
 # ---
 # setCookie - set a cookie on the host device
@@ -139,7 +140,8 @@ calcOther = ->
 calcTotalNotFailures = ->
   floatTotalNotFailures = undefined
   # Calculate total costs before failures
-  floatTotalNotFailures = calcEnergy() + calcFilament() + calcDepreciation() + calcRepairs() + calcOther()
+  floatTotalNotFailures = calcEnergy() + calcFilament()
+  floatTotalNotFailures += calcDepreciation() + calcRepairs() + calcOther() if boolInvestmentMode == true
   # Return total costs before failures
   floatTotalNotFailures
 
@@ -171,6 +173,9 @@ grabInputs = ->
   floatRepairRate = Number(document.getElementById('repair_rate').value)
   floatOtherCosts = Number(document.getElementById('other_costs').value)
   floatFailureRate = Number(document.getElementById('failure_rate').value)
+  boolInvestmentMode = Boolean(document.getElementById('investment_mode').checked)
+  document.querySelectorAll('input[data-disabled]').forEach (input) ->
+    input.disabled = !boolInvestmentMode
   return
 
 # ---
@@ -192,7 +197,9 @@ calcTotal = ->
   floatTotal = 0.0
   # If inputs are valid, calc total, else alert user  
   if inputsValid()
-    floatTotal = calcTotalNotFailures() + calcFailures()
+    floatTotal = calcTotalNotFailures() 
+    floatTotal += calcFailures() if boolInvestmentMode == true
+
   else
     alert 'Some input fields contain non-numeric values (ie, letters or symbols). Please correct them, then re-calculate!'
   # Return the total
@@ -206,10 +213,13 @@ displayTotal = ->
   floatTotal = undefined
   # Copy inputs to global variables
   grabInputs()
+
   # Save all inputs as cookies
   saveCookies()
+
   # Calculate total
   floatTotal = calcTotal()
+
   # Only display new total if inputs were valid
   if inputsValid()
     document.getElementById('total_cost').innerHTML = floatTotal.toFixed(2)
@@ -232,6 +242,7 @@ resetDefaults = ->
   floatRepairRate = '10'
   floatOtherCosts = '0.1'
   floatFailureRate = '10'
+  boolInvestmentMode = false
   return
 
 # ---
@@ -251,7 +262,7 @@ displayValues = ->
   document.getElementById('repair_rate').value = floatRepairRate
   document.getElementById('other_costs').value = floatOtherCosts
   document.getElementById('failure_rate').value = floatFailureRate
-  displayTotal()
+  document.getElementById('investment_mode').checked = boolInvestmentMode if boolInvestmentMode == true
   return
 
 # ---
@@ -270,6 +281,7 @@ saveCookies = ->
   setCookie 'floatRepairRate', floatRepairRate, COOKIE_DAYS
   setCookie 'floatOtherCosts', floatOtherCosts, COOKIE_DAYS
   setCookie 'floatFailureRate', floatFailureRate, COOKIE_DAYS
+  setCookie 'boolInvestmentMode', boolInvestmentMode, COOKIE_DAYS
   return
 
 # ---
@@ -288,6 +300,7 @@ loadCookies = ->
   floatRepairRate = getCookie('floatRepairRate')
   floatOtherCosts = getCookie('floatOtherCosts')
   floatFailureRate = getCookie('floatFailureRate')
+  boolInvestmentMode = getCookie('boolInvestmentMode') == 'true'
   return
 
 # ---
@@ -306,6 +319,7 @@ deleteCookies = ->
   setCookie 'floatRepairRate', ''
   setCookie 'floatOtherCosts', ''
   setCookie 'floatFailureRate', ''
+  setCookie 'boolInvestmentMode', ''
   return
 
 # ---
@@ -318,10 +332,15 @@ document.addEventListener 'DOMContentLoaded', ->
     loadCookies()
   else
     resetDefaults()
+
   # Display values to user
   displayValues()
+  displayTotal()
+
   # Listen to form changes
   document.querySelectorAll('input').forEach (input) ->
     input.addEventListener 'keyup', displayTotal
     return
+
+  document.querySelector('input[type=checkbox]').addEventListener 'click', displayTotal
   return

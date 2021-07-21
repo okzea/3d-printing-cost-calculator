@@ -19,6 +19,8 @@ printer_power_kind: "Watts"
 filament_cost: "Filament cost"
 filament_cost_kind: "€/kg"
 
+investment_mode: "Investment"
+
 printer_purchase: "Printer cost"
 printer_purchase_kind: "€"
 
