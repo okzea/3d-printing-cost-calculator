@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.language }}">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Okzea">
-  <title>Home | 3D Printing cost calculator</title>
+  <title>{{ page.title }} | {{ site.name[page.language] }}</title>
   <link rel="icon" type="image/svg+xml" href="/icon.svg">
 
   <!-- Bootstrap core CSS -->
@@ -34,16 +34,16 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="/icon.svg" alt="" width="27" height="27" class="d-inline-block align-text-top me-1">
-        3D Printing cost calculator
+        {{ site.name[page.language] }}
       </a>
 
       <div class="d-flex" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="/">EN</a>
+            <a class="nav-link {% if page.language == "en" %}active{% endif %}" href="{{ site.baseurl }}/">EN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/fr">FR</a>
+            <a class="nav-link {% if page.language == "fr" %}active{% endif %}" href="{{ site.baseurl | append: "/fr" }}">FR</a>
           </li>
         </ul>
       </div>
@@ -60,90 +60,90 @@
               <form class="needs-validation" novalidate>
                 <div class="g-3">
                   <div class="mb-3">
-                    <label for="object_weight" class="form-label">Weight</label>
+                    <label for="object_weight" class="form-label">{{ page.object_weight }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="object_weight" class="form-control">
-                      <span class="input-group-text">gr</span>
+                      <span class="input-group-text">{{ page.object_weight_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printing_time" class="form-label">Printing time</label>
+                    <label for="printing_time" class="form-label">{{ page.printing_time }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printing_time" class="form-control">
-                      <span class="input-group-text">hours</span>
+                      <span class="input-group-text">{{ page.printing_time_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="electric_rate" class="form-label">Electric rate</label>
+                    <label for="electric_rate" class="form-label">{{ page.electric_rate }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="electric_rate" class="form-control">
-                      <span class="input-group-text">€/kWh</span>
+                      <span class="input-group-text">{{ page.electric_rate_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_power" class="form-label">Printer power</label>
+                    <label for="printer_power" class="form-label">{{ page.printer_power }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_power" class="form-control">
-                      <span class="input-group-text">Watts</span>
+                      <span class="input-group-text">{{ page.printer_power_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="filament_cost" class="form-label">Filament cost</label>
+                    <label for="filament_cost" class="form-label">{{ page.filament_cost }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="filament_cost" class="form-control">
-                      <span class="input-group-text">€/kg</span>
+                      <span class="input-group-text">{{ page.filament_cost_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_purchase" class="form-label">Printer cost</label>
+                    <label for="printer_purchase" class="form-label">{{ page.printer_purchase }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_purchase" class="form-control">
-                      <span class="input-group-text">€</span>
+                      <span class="input-group-text">{{ page.printer_purchase_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_life" class="form-label">Printer life</label>
+                    <label for="printer_life" class="form-label">{{ page.printer_life }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_life" class="form-control">
-                      <span class="input-group-text">years</span>
+                      <span class="input-group-text">{{ page.printer_life_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="printer_daily_use" class="form-label">Daily use</label>
+                    <label for="printer_daily_use" class="form-label">{{ page.printer_daily_use }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="printer_daily_use" class="form-control">
-                      <span class="input-group-text">hours</span>
+                      <span class="input-group-text">{{ page.printer_daily_use_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="repair_rate" class="form-label">Repair rate</label>
+                    <label for="repair_rate" class="form-label">{{ page.repair_rate }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="repair_rate" class="form-control">
-                      <span class="input-group-text">%</span>
+                      <span class="input-group-text">{{ page.repair_rate_kind }}</span>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="other_costs" class="form-label">Misc costs</label>
+                    <label for="other_costs" class="form-label">{{ page.other_costs }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="other_costs" class="form-control">
-                      <span class="input-group-text">€</span>
+                      <span class="input-group-text">{{ page.other_costs_kind }}</span>
                     </div>
                   </div>
 
                   <div>
-                    <label for="failure_rate" class="form-label">Failure rate</label>
+                    <label for="failure_rate" class="form-label">{{ page.failure_rate }}</label>
                     <div class="input-group mb-3">
                       <input type="number" id="failure_rate" class="form-control">
-                      <span class="input-group-text">%</span>
+                      <span class="input-group-text">{{ page.failure_rate_kind }}</span>
                     </div>
                   </div>
 
@@ -159,9 +159,9 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0">Total cost</h6>
+                <h6 class="my-0">{{ page.total_cost }}</h6>
               </div>
-              <span class="text-muted"><span id="total_cost"></span>€</span>
+              <span class="text-muted"><span id="total_cost"></span>{{ page.total_cost_kind }}</span>
             </li>
           </ul>
 
